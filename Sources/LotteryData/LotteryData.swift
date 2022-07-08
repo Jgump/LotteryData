@@ -1,9 +1,9 @@
 import Foundation
 
-public struct LotteryMetadata{
+public struct LotteryData{
    
     private init(){}
-    public static let shared:LotteryMetadata = LotteryMetadata()
+    public static let shared:LotteryData = LotteryData()
     
     public func data(for year:Int) ->Data?{
         guard let url = Bundle.module.url(forResource: year.description, withExtension: "plist"),
