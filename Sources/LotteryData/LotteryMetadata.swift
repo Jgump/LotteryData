@@ -1,24 +1,5 @@
 import Foundation
-private class BundleFinder{}
 
-extension Bundle{
-    
-   public static var module:Bundle = {
-        let candidates = [
-            Bundle.main.resourceURL,
-            Bundle(for: BundleFinder.self).resourceURL,
-            Bundle.main.bundleURL
-        ]
-        
-        for url in candidates {
-            let path = url?.appendingPathComponent("LotteryData.bundle")
-            if let bundle = path.flatMap(Bundle.init(url:)){
-                return bundle
-            }
-        }
-        fatalError("unable to rfind bundle named DataForDoubleColorBall")
-    }()
-}
 public struct LotteryMetadata{
    
     private init(){}
