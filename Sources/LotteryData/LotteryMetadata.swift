@@ -11,4 +11,10 @@ public struct LotteryMetadata{
         return data
     }
     
+    public func dirs(for year:Int) ->[Dictionary<String,Any>]{
+        guard let data = data(for: year) else {return []}
+        guard let dirs = try? PropertyListSerialization.propertyList(from: data, format: .none) as? [Dictionary<String,Any>] else {return []}
+        return dirs
+    }
+    
 }
