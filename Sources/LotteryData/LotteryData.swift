@@ -11,10 +11,20 @@ public struct LotteryData{
         return data
     }
     
-    public func dirs(for year:Int) ->[Dictionary<String,Any>]{
-        guard let data = data(for: year) else {return []}
-        guard let dirs = try? PropertyListSerialization.propertyList(from: data, format: .none) as? [Dictionary<String,Any>] else {return []}
-        return dirs
+    public func dirs(for year:Int = 0) ->[Dictionary<String,Any>]{
+        if year == 0{
+             return (2003...2022).compactMap{data(for:$0)}
+                .compactMap{try? PropertyListSerialization.propertyList(from:$0,options:.mutableContainers,format:.none) as? [Dictionary<String,Any>]}
+                .reduce([]){$0 + $1}
+                
+            
+        }else{
+            guard let data = data(for: year) else {return []}
+            guard let dirs = try? PropertyListSerialization.propertyList(from: data, format: .none) as? [Dictionary<String,Any>] else {return []}
+            return dirs
+        }
     }
+    
+    
     
 }
