@@ -22,4 +22,7 @@ public struct Lottery{
         self.nums = nums
     }
     
+    public func value(_ keyPath:KeyPath<Lottery,String>) ->String{
+        self[keyPath: keyPath]
+    }
 }
