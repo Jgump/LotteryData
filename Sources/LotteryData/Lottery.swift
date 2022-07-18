@@ -8,9 +8,9 @@
 import Foundation
 
 public struct Lottery{
-    let issue:String
-    let date:String
-    let nums:String
+   public let issue:String
+   public let date:String
+   public let nums:String
     
     
     public  init?(dir:Dictionary<String,Any>){
