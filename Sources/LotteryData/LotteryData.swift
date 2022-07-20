@@ -28,3 +28,12 @@ public struct LotteryData{
     
     
 }
+
+@available(iOS 15.0.0, *)
+public extension LotteryData{
+    
+    func lotterys(year:Int = 0) async ->[Lottery]{
+        await Task{dirs(for: year).compactMap{Lottery(dir: $0)}}.value
+    }
+    
+}
